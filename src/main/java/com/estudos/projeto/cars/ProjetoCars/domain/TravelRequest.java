@@ -1,18 +1,23 @@
 package com.estudos.projeto.cars.ProjetoCars.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
+
 @Data
 @Entity
-public class Driver {
+public class TravelRequest {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-	private Date birthDate;
+	
+	@ManyToOne
+	private Passenger passenger;
+	private String origin;
+	private String destination;
+	
 }
