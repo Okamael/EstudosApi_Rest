@@ -1,6 +1,10 @@
 package com.estudos.projeto.cars.ProjetoCars.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -13,11 +17,15 @@ public class TravelRequest {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	Long id;
 	
 	@ManyToOne
-	private Passenger passenger;
-	private String origin;
-	private String destination;
+	Passenger passenger;
+	String origin;
+	String destination;
+	
+	@Enumerated(EnumType.STRING)
+	TravelRequestStatus status;
+	Date creationDate;
 	
 }

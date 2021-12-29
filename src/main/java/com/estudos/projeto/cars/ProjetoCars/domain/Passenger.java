@@ -11,6 +11,6 @@ import lombok.Data;
 public class Passenger {
 	@Id
 	@GeneratedValue
-	private Long id;
-	private String name;
+	Long id;
+	String name;
 }

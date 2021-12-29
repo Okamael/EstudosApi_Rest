@@ -12,7 +12,7 @@ import lombok.Data;
 public class Driver {
 	@Id
 	@GeneratedValue
-	private Long id;
-	private String name;
-	private Date birthDate;
+	Long id;
+	String name;
+	Date birthDate;
 }

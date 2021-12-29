@@ -1,6 +1,5 @@
-package com.estudos.projeto.cars.ProjetoCars.interfaces;
+package com.estudos.projeto.cars.ProjetoCars.interfaces.incoming;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.estudos.projeto.cars.ProjetoCars.domain.Driver;
-import com.estudos.projeto.cars.ProjetoCars.repository.DriverRepository;
+import com.estudos.projeto.cars.ProjetoCars.domain.DriverRepository;
 @Service
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class DriverAPI {
 	@Autowired
-	private DriverRepository driverRepository;
+	DriverRepository driverRepository;
 	
 	
 	@GetMapping("/drivers")
