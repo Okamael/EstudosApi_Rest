@@ -1,8 +1,15 @@
 package com.estudos.projeto.cars.ProjetoCars.interfaces.outcoming;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import com.jayway.jsonpath.JsonPath;
+
+import net.minidev.json.JSONArray;
 
 @Service
 public class GMapsService {
@@ -16,6 +23,12 @@ public class GMapsService {
 		RestTemplate template = new RestTemplate();
 		String jsonResult =  template.getForObject(GMAPS_TEMPLATE,String.class, addresOne, addressTwo, appKey);
 		
-		return 0;
+		
+		
+		JSONArray rawResults = JsonPath.parse(jsonResult).read("$..legs[*].duration.value");
+		List<Integer> results =  rawResults.stream().map(it -> ((Integer) it)).collect(Collectors.toList()); 
+		
+		
+		return results.stream().min(Integer::compareTo).orElse(Integer.MAX_VALUE);
 	}
 }

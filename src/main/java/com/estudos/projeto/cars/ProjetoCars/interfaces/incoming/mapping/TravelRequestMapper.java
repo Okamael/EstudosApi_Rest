@@ -1,5 +1,8 @@
 package com.estudos.projeto.cars.ProjetoCars.interfaces.incoming.mapping;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -57,5 +60,9 @@ public class TravelRequestMapper {
                 .withTitle(travelRequest.getPassenger().getName());
         model.add(passengerLink);
         return model;
+    }
+    
+    public List<EntityModel<TravelRequestOutput>> buildOutPutModel(List<TravelRequest>requests){
+    	return requests.stream().map(tr -> buildOutputModel(tr, map(tr))).collect(Collectors.toList());
     }
 }

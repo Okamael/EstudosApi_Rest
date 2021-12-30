@@ -55,7 +55,7 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>com.javaway.jsonpath</groupId>
+			<groupId>com.jayway.jsonpath</groupId>
 			<artifactId>json-path</artifactId>
 		</dependency>
 	</dependencies>
