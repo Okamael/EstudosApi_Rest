@@ -13,15 +13,17 @@ import net.minidev.json.JSONArray;
 
 @Service
 public class GMapsService {
-	private static final String GMAPS_TEMPLATE = "https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={key}";
+	private static final String GMAPS_TEMPLATE = "/maps/api/directions/json?origin={origin}&destination={destination}&key={key}";
 	
 	@Value("${app.car.domain.googlemaps.apikey}")
 	private String appKey;
+	@Value("${interfaces.outcoming.gmaps.host:https://maps.googleapis.com}")
+	private String gMapsHost;
 	
 	
 	public Integer getDistanceBetweenAddresses(String addresOne, String addressTwo) {
 		RestTemplate template = new RestTemplate();
-		String jsonResult =  template.getForObject(GMAPS_TEMPLATE,String.class, addresOne, addressTwo, appKey);
+		String jsonResult =  template.getForObject(gMapsHost+GMAPS_TEMPLATE,String.class, addresOne, addressTwo, appKey);
 		
 		
 		
